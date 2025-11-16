@@ -5,15 +5,39 @@
   },
   "tasks": [
     {
-      "label": "Start (Simulator + Watcher)",
+      "label": "PXL :: Start F# (Simulator + F# Watcher)",
       "type": "shell",
-      "command": "./start.sh",
+      "command": "./start-fsharp.sh",
       "group": {
         "kind": "build",
         "isDefault": false
       },
       "windows": {
-        "command": "./start.ps1"
+        "command": "./start-fsharp.ps1"
+      }
+    },
+    {
+      "label": "PXL :: Start C# (Simulator + C# Watcher)",
+      "type": "shell",
+      "command": "./start-csharp.sh",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "windows": {
+        "command": "./start-csharp.ps1"
+      }
+    },
+    {
+      "label": "PXL :: Start Simulator ONLY",
+      "type": "shell",
+      "command": "./build/start-simulator.sh",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "windows": {
+        "command": "./build/start-simulator.ps1"
       }
     }
   ]

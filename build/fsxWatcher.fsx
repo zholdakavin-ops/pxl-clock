@@ -5,7 +5,7 @@ open System.IO
 open FSharp.Compiler.Interactive.Shell
 open System.Threading
 
-let watchPath = __SOURCE_DIRECTORY__
+let watchPath = Path.Combine(__SOURCE_DIRECTORY__, "..", "apps_fsharp")
 
 let fsiSession, outStream, errStream = 
     let argv = [| "fsi.exe"; "--noninteractive" |]
