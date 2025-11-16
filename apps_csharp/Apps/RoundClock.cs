@@ -3,9 +3,9 @@ using Pxl.Ui.CSharp;
 using SkiaSharp;
 using static Pxl.Ui.CSharp.Drawing;
 
-static class DemoApps
+static class RoundClock
 {
-    public static Action RoundClock = () =>
+    public static Action Scene = () =>
     {
         var now = Ctx.Now;
         var isSmooth = true;
