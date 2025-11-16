@@ -22,11 +22,13 @@ Here is the most easy and convenient way to get started with developing PXL Cloc
 
 - Create or open a [**Codespace**](https://github.com/CuminAndPotato/PXL-Clock)
 - (!) Wait for the Codespace to initialize (this may take a few minutes)
-- Run the `./start.sh` script in the terminal
+- Choose your language: **F#** or **C#**
+  - For **F#**: Run `./start-fsharp.sh` in the terminal
+  - For **C#**: Run `./start-csharp.sh` in the terminal
 - Open the simulator in your browser at `http://localhost:5001`
-- Open an existing file (e.g. `apps_fsharp/05_UrsEnzler/ursEnzler_ColourWheelDynamic.fsx`)
-- Save the file (`Ctrl+S` or `Cmd+S`) to run it in the simulator
-  - (!) Save the file even if you don’t change anything, to trigger the simulator to run it!
+- **F# Users**: Open and save any `.fsx` file (e.g. `apps_fsharp/05_UrsEnzler/ursEnzler_ColourWheelDynamic.fsx`)
+  - (!) Save the file even if you don't change anything, to trigger the simulator to run it!
+- **C# Users**: Edit `apps_csharp/Program.cs` and save to see changes automatically
 
 For anything else, have a look at the resources below :) Enjoy!
 
@@ -105,9 +107,29 @@ Just head over to the [**Issues**](../../issues) tab and click **New Issue** to 
 [![NuGet](https://img.shields.io/nuget/v/Pxl.svg?style=flat-square&logo=nuget)](https://www.nuget.org/packages/Pxl)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/Pxl.svg?style=flat-square)](https://www.nuget.org/packages/Pxl)
 
-Whether you’re a seasoned developer or new to programming, we hope these resources will jumpstart your creativity.
+Whether you're a seasoned developer or new to programming, we hope these resources will jumpstart your creativity.
 
-You can use this repository as a reference point for developing your own custom PXL Clock applications. We provide examples, documentation, and tools to help you get started:
+You can use this repository as a reference point for developing your own custom PXL Clock applications in **F#** or **C#**. We provide examples, documentation, and tools to help you get started.
+
+### Choose Your Language: F# or C#
+
+PXL Clock supports development in both **F#** and **C#**, giving you the flexibility to use whichever language you prefer:
+
+#### **F# Development**
+- **Interactive scripting**: Write `.fsx` files that run immediately when saved
+- **Great for**: Rapid prototyping, experimenting with ideas, creative coding
+- **Examples**: Check out `apps_fsharp/` directory for numerous examples
+- **API**: Functional-first API with composable functions
+
+#### **C# Development**
+- **Familiar syntax**: Use standard C# with top-level statements
+- **Great for**: Object-oriented developers, integration with existing C# codebases
+- **Examples**: See `apps_csharp/Program.cs` for comprehensive examples
+- **API**: Fluent API with method chaining (e.g., `Ctx.Circle(12, 12, 10).Fill.Solid(Colors.Yellow)`)
+
+Both languages use the same underlying rendering engine and share similar capabilities for creating graphics, animations, and interactive clock displays.
+
+### Getting Started
 
 To program PXL-Apps, you can either **start a Codespace (recommended)** or **set up locally with VSCode**.
 
@@ -117,11 +139,17 @@ To program PXL-Apps, you can either **start a Codespace (recommended)** or **set
 - This will launch a ready-to-use development environment in your browser.
 - All prerequisites are pre-installed; you can start coding and testing immediately.
    
- To keep your simulator and F# watcher running continuously in Codespaces, use our helper script:
+To keep your simulator and watcher running continuously in Codespaces, use our helper script:
 
- ```bash
- ./build/codespace-watcher.sh
- ```
+**For F#:**
+```bash
+./start-fsharp.sh
+```
+
+**For C#:**
+```bash
+./start-csharp.sh
+```
 
 ### Option 2: Set Up Locally with VSCode
 
@@ -129,7 +157,8 @@ To program PXL-Apps, you can either **start a Codespace (recommended)** or **set
 
 - [**.NET 8 SDK**](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 - [**Visual Studio Code (VSCode)**](https://code.visualstudio.com/)
-- [**Ionide-fsharp Extension for VSCode**](https://marketplace.visualstudio.com/items?itemName=Ionide.Ionide-fsharp)
+- **For F#**: [**Ionide-fsharp Extension for VSCode**](https://marketplace.visualstudio.com/items?itemName=Ionide.Ionide-fsharp)
+- **For C#**: [**C# Dev Kit Extension for VSCode**](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) (optional but recommended)
 
 #### Fork the Repository
 
@@ -137,21 +166,79 @@ Best practice is to fork this repository to your GitHub account. This way, you c
 
 #### Create Your First App
 
-A PXL-App consists of two parts:
+**F# Apps:**
+- Create a new `.fsx` file in the `./apps_fsharp` directory
+- Write your scene using the F# API
+- Save the file to run it in the simulator
+- You can use the existing apps as a starting point
 
-- one or more F# script (or many of them) that contain the code for your app,
-- optionally some assets like images.
-
-To set up your first app, simply create a new F# script file in the `./apps_fsharp` directory. You can use the existing apps as a starting point to learn more about the structure of a PXL-App.
+**C# Apps:**
+- Edit `./apps_csharp/Program.cs`
+- Define scenes as lambda functions:
+  ```csharp
+  var myScene = () =>
+  {
+      Ctx.Circle(12, 12, 10).Fill.Solid(Colors.Yellow);
+      Ctx.Text().Mono6x6("Hi!", 0, 18).Fill.Solid(Colors.White);
+  };
+  ```
+- Set your scene: `var currentScene = myScene;`
+- Save to see changes in the simulator
 
 ### 🚀 Start the Simulator
 
-TL;DR:
+**Using VSCode Tasks (Recommended):**
 
-- Open the VSCode build task (by pressing `Ctrl+Shift+B`) and select `Start All`. That will run the simulator and the FSI (F# Interactive) file watcher for you.
-- You then open the simulator in your browser (`http://localhost:5001`).
-- After that, simply create or modify any `.fsx` file in the `./apps_fsharp` directory.
-- The last file saved will be automatically run in the simulator.
+- Open the VSCode build task (press `Ctrl+Shift+B` or `Cmd+Shift+B`)
+- Select:
+  - `PXL :: Start F# (Simulator + F# Watcher)` for F# development
+  - `PXL :: Start C# (Simulator + C# Watcher)` for C# development
+- Open the simulator in your browser at `http://localhost:5001`
+
+**Using Shell Scripts:**
+
+**For F#:**
+```bash
+./start-fsharp.sh      # macOS/Linux
+./start-fsharp.ps1     # Windows PowerShell
+```
+
+**For C#:**
+```bash
+./start-csharp.sh      # macOS/Linux
+./start-csharp.ps1     # Windows PowerShell
+```
+
+After starting:
+- **F# Users**: Save any `.fsx` file in `./apps_fsharp` to run it
+- **C# Users**: Save `Program.cs` to rebuild and restart automatically
+
+### C# API Quick Reference
+
+The C# API uses a fluent, chainable syntax:
+
+```csharp
+using Pxl.Ui.CSharp;
+using SkiaSharp;
+using static Pxl.Ui.CSharp.Drawing;
+
+// Drawing shapes
+Ctx.Circle(12, 12, 10).Fill.Solid(Colors.Yellow);
+Ctx.RectXyWh(2, 2, 20, 20).Stroke.Solid(Colors.Red, strokeWidth: 2);
+Ctx.Line(0, 0, 24, 24).Stroke.Solid(Colors.Cyan);
+
+// Gradients
+Ctx.Circle(12, 12, 10).Fill.RadialGradient(
+    new SKPoint(12, 12), 12,
+    [Colors.Yellow, Colors.Orange, Colors.Red]
+);
+
+// Text
+Ctx.Text().Mono6x6("Hello", 0, 0).Fill.Solid(Colors.White);
+Ctx.Text().Var3x5("PXL", 0, 7).Fill.Solid(Colors.Cyan);
+```
+
+See `apps_csharp/Program.cs` for comprehensive examples including animations, gradients, and more.
 
 ### Submit Your App
 
