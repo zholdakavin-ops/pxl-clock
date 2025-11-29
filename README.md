@@ -100,10 +100,12 @@ Just head over to the [**Issues**](../../issues) tab and click **New Issue** to 
 [![NuGet](https://img.shields.io/nuget/v/Pxl.svg?style=flat-square&logo=nuget)](https://www.nuget.org/packages/Pxl)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/Pxl.svg?style=flat-square)](https://www.nuget.org/packages/Pxl)
 
+
 ### Prerequisites
 
 - [**.NET 10 SDK**](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
 - [**Visual Studio Code**](https://code.visualstudio.com/)
+
 
 ### Getting Started
 
@@ -119,18 +121,19 @@ Just head over to the [**Issues**](../../issues) tab and click **New Issue** to 
 
 4. **Examples:** Check out `apps_csharp/Apps/` for example applications
 
+
+### Use Your PXL Clock for Development
+
+1. In the PXL-App, go to the "Settings" tab of your connected PXL Clock, and "Turn Off Display".
+
+2. In `Program.cs`, set the target device to your connected PXL Clock.
+
+3. Start as usual (see above).
+
+
 ### Quick API Example
 
-```csharp
-using Pxl.Ui.CSharp;
-using static Pxl.Ui.CSharp.Drawing;
-
-var myScene = () =>
-{
-    Ctx.Circle(12, 12, 10).Fill.Solid(Colors.Yellow);
-    Ctx.Text().Mono6x6("Hi!", 0, 18).Fill.Solid(Colors.White);
-};
-```
+Look at the example apps located in the `apps_csharp/Apps/` directory.
 
 ---
 

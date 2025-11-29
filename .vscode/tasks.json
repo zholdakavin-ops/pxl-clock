@@ -27,6 +27,18 @@
       "windows": {
         "command": "./build/start-simulator.ps1"
       }
+    },
+    {
+      "label": "PXL :: Start C# Watcher ONLY",
+      "type": "shell",
+      "command": "./build/start-csharp-watcher.sh",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "windows": {
+        "command": "./build/start-simulator.ps1"
+      }
     }
   ]
 }
