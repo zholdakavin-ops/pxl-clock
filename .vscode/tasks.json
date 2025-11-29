@@ -5,18 +5,6 @@
   },
   "tasks": [
     {
-      "label": "PXL :: Start F# (Simulator + F# Watcher)",
-      "type": "shell",
-      "command": "./start-fsharp.sh",
-      "group": {
-        "kind": "build",
-        "isDefault": false
-      },
-      "windows": {
-        "command": "./start-fsharp.ps1"
-      }
-    },
-    {
       "label": "PXL :: Start C# (Simulator + C# Watcher)",
       "type": "shell",
       "command": "./start-csharp.sh",

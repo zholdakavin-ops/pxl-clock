@@ -1,7 +1,0 @@
-{
-  "extends": "../../tsconfig.base.json",
-  "include": ["src/**/*.ts", "runApp.ts"],
-  "compilerOptions": {
-    "outDir": "dist"
-  }
-}

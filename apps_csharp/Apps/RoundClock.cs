@@ -10,9 +10,9 @@ static class RoundClock
         var now = Ctx.Now;
         var isSmooth = true;
 
-        var clockColor = Colors.White;
+        var clockColor = Color.White;
         var color1 = clockColor;
-        var color2 = Colors.Black;
+        var color2 = Color.Black;
 
         // Swap colors every other minute
         var arcFg = now.Minute % 2 == 0 ? color1 : color2;

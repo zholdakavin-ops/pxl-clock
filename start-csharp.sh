@@ -8,5 +8,7 @@
 # Start the C# Watcher in the background
 ./build/start-csharp-watcher.sh &
 
+open http://127.0.0.1:5001 &
+
 # Wait for both processes to finish (if they ever do)
 wait

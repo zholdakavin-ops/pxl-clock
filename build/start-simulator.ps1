@@ -1,3 +1,3 @@
 echo "Downloading simulator ..."
 dotnet tool restore
-dotnet pxl
+dotnet Pxl.Simulator
