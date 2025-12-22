@@ -5,7 +5,7 @@
   },
   "tasks": [
     {
-      "label": "PXL :: Start C# (Simulator + C# Watcher)",
+      "label": "PXL :: Start C#/F# (Simulator + Watcher)",
       "type": "shell",
       "command": "./start-csharp.sh",
       "group": {
@@ -29,7 +29,7 @@
       }
     },
     {
-      "label": "PXL :: Start C# Watcher ONLY",
+      "label": "PXL :: Start C#/F# Watcher ONLY",
       "type": "shell",
       "command": "./build/start-csharp-watcher.sh",
       "group": {

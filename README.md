@@ -21,9 +21,9 @@ We’re excited to see what the community will build around the PXL Clock. Below
 **Getting Started:**
 1. Run `./start-csharp.sh` in the terminal (or use VSCode task: `PXL :: Start C# (Simulator + C# Watcher)`)
 2. Open the simulator at `http://localhost:5001`
-3. Edit `apps_csharp/Program.cs` and save to see changes
+3. Edit `apps/Program.cs` and save to see changes
 
-**Examples:** Check out the example apps in `apps_csharp/Apps/` directory
+**Examples:** Check out the example apps in `apps/Apps/` directory
 
 ---
 
@@ -117,9 +117,9 @@ Just head over to the [**Issues**](../../issues) tab and click **New Issue** to 
 
 2. **Open simulator:** Navigate to `http://localhost:5001` in your browser
 
-3. **Edit and code:** Modify `apps_csharp/Program.cs` and save to see changes automatically
+3. **Edit and code:** Modify `apps/Program.cs` and save to see changes automatically
 
-4. **Examples:** Check out `apps_csharp/Apps/` for example applications
+4. **Examples:** Check out `apps/Apps/` for example applications
 
 
 ### Use Your PXL Clock for Development
@@ -133,7 +133,7 @@ Just head over to the [**Issues**](../../issues) tab and click **New Issue** to 
 
 ### Quick API Example
 
-Look at the example apps located in the `apps_csharp/Apps/` directory.
+Look at the example apps located in the `apps/Apps/` directory.
 
 ---
 

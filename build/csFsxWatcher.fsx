@@ -3,7 +3,7 @@ open System.IO
 open System.Diagnostics
 open System.Threading
 
-let watchPath = Path.Combine(__SOURCE_DIRECTORY__, "..", "apps_csharp")
+let watchPath = Path.Combine(__SOURCE_DIRECTORY__, "..", "apps")
 
 let mutable currentProcess: Process option = None
 let processLock = obj()
@@ -21,11 +21,16 @@ let startDotnetRunForFile (filePath: string) =
                 printfn $"Warning: Error killing process: {ex.Message}"
         | _ -> ()
 
-        // Start new process with specific file
-        printfn $"Starting dotnet run for file: {filePath}"
+        // Determine command based on file extension
+        let isFsx = filePath.EndsWith(".fsx", StringComparison.OrdinalIgnoreCase)
+        let command, args = 
+            if isFsx then "dotnet", $"fsi \"{filePath}\""
+            else "dotnet", $"run \"{filePath}\""
+
+        printfn $"Starting {command} {args}"
         let startInfo = ProcessStartInfo()
-        startInfo.FileName <- "dotnet"
-        startInfo.Arguments <- $"run \"{filePath}\""
+        startInfo.FileName <- command
+        startInfo.Arguments <- args
         startInfo.WorkingDirectory <- watchPath
         startInfo.UseShellExecute <- false
         startInfo.RedirectStandardOutput <- true
@@ -72,16 +77,17 @@ let onChanged (e: FileSystemEventArgs) =
         startDotnetRunForFile(e.FullPath)
 
 do
-    let w = new FileSystemWatcher(watchPath, "*.cs")
-    w.IncludeSubdirectories <- true
-    w.NotifyFilter <- NotifyFilters.FileName ||| NotifyFilters.LastWrite
-    w.Changed.Add(onChanged)
-    w.Created.Add(onChanged)
-    w.Renamed.Add(onChanged)
-    w.EnableRaisingEvents <- true
+    for pattern in ["*.cs"; "*.fsx"] do
+        let watcher = new FileSystemWatcher(watchPath, pattern)
+        watcher.IncludeSubdirectories <- true
+        watcher.NotifyFilter <- NotifyFilters.FileName ||| NotifyFilters.LastWrite
+        watcher.Changed.Add(onChanged)
+        watcher.Created.Add(onChanged)
+        watcher.Renamed.Add(onChanged)
+        watcher.EnableRaisingEvents <- true
 
-printfn $"Watching {watchPath} for C# file changes (Ctrl+C to exit)..."
-printfn "Waiting for file changes... (No initial run - modify a .cs file to start)"
+printfn $"Watching {watchPath} for C# and F# file changes (Ctrl+C to exit)..."
+printfn "Waiting for file changes... (No initial run - modify a .cs or .fsx file to start)"
 
 // Wait for Ctrl+C
 let exitEvent = new ManualResetEvent(false)
@@ -104,4 +110,4 @@ Console.CancelKeyPress.Add(fun args ->
 
 exitEvent.WaitOne() |> ignore
 
-printfn "C# watcher closed."
+printfn "File watcher closed."

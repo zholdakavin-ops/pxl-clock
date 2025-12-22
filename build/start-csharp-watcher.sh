@@ -1,5 +1,5 @@
 #!/bin/bash
 set -e
 
-echo "Starting C# watcher ..."
-dotnet fsi ./build/csWatcher.fsx
+echo "Starting C#/F# watcher ..."
+dotnet fsi ./build/csFsxWatcher.fsx
