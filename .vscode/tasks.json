@@ -7,13 +7,13 @@
     {
       "label": "PXL :: Start C#/F# (Simulator + Watcher)",
       "type": "shell",
-      "command": "./start-csharp.sh",
+      "command": "./start.sh",
       "group": {
         "kind": "build",
         "isDefault": false
       },
       "windows": {
-        "command": "./start-csharp.ps1"
+        "command": "./start.ps1"
       }
     },
     {
@@ -31,7 +31,7 @@
     {
       "label": "PXL :: Start C#/F# Watcher ONLY",
       "type": "shell",
-      "command": "./build/start-csharp-watcher.sh",
+      "command": "./build/start-watcher.sh",
       "group": {
         "kind": "build",
         "isDefault": false

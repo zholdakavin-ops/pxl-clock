@@ -19,7 +19,7 @@ We’re excited to see what the community will build around the PXL Clock. Below
 ## Quick-Start Development of PXL Clock Apps
 
 **Getting Started:**
-1. Run `./start-csharp.sh` in the terminal (or use VSCode task: `PXL :: Start C# (Simulator + C# Watcher)`)
+1. Run `./start.sh` in the terminal (or use VSCode task: `PXL :: Start C# (Simulator + C# Watcher)`)
 2. Open the simulator at `http://localhost:5001`
 3. Edit `apps/Program.cs` and save to see changes
 
@@ -111,7 +111,7 @@ Just head over to the [**Issues**](../../issues) tab and click **New Issue** to 
 
 1. **Start the simulator:**
    ```bash
-   ./start-csharp.sh
+   ./start.sh
    ```
    Or use VSCode task: `Ctrl+Shift+B` → `PXL :: Start C# (Simulator + C# Watcher)`
 
