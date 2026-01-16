@@ -249,7 +249,7 @@ var textGraphicsScene = () =>
 
 
 
-await PXL.Simulate(textGraphicsScene);
-// await PXL.SendToDevice(scene, "192.168.178.100");
+// await PXL.Simulate(textGraphicsScene);
+await PXL.SendToDevice(textGraphicsScene, "192.168.178.110");
 
 // Hallo
