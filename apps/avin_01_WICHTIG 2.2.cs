@@ -52,15 +52,17 @@ var scene = () =>
     {
         for (var x = 0; x < width; x++)
         {
-            var dx = x - width / 2.0;
-            var dy = y - height / 2.0;
-            var dist = Math.Sqrt(dx * dx + dy * dy);
+            var dx = x - width / 2.0; // Distanz (horizontal) des "aktuellen" Punktes zum Mittelpunkt
+            var dy = y - height / 2.0; // Distanz (vertikal) des "aktuellen" Punktes zum Mittelpunkt
+
+            // Satz des Pythagoras
+            var distToCenter = Math.Sqrt(dx * dx + dy * dy);
 
             // If this pixel is within the protective radius around the clock, skip it.
-            if (dist < clockExclusionRadius)
+            if (distToCenter < clockExclusionRadius)
                 continue;
 
-            var wave = Math.Sin(dist * 0.7 - time);
+            var wave = Math.Sin(distToCenter * 0.7 - time);
             var intensity = (wave + 1.0) / 2.0;
 
             var rr = (byte)(Math.Max(0, Math.Sin(time + x * 0.3 + 0) * 127 + 128));
@@ -71,7 +73,7 @@ var scene = () =>
             gg = (byte)(gg * intensity);
             bb = (byte)(bb * intensity);
 
-            Ctx.RectXyWh(x, y, 1, 1).Fill.Solid(Color.FromArgb(255, rr, gg, bb));
+            Ctx.Point(x, y).Stroke.Solid(Color.FromArgb(255, rr, gg, bb));
         }
     }
 
@@ -83,6 +85,5 @@ var scene = () =>
 
 // await PXL.Simulate(scene);
 
-await PXL.SendToDevice(scene, "192.168.178.110");
-
+await PXL.SendToDevice(scene, "192.168.178.110"); 
 

@@ -133,4 +133,4 @@ var scene = () =>
 await PXL.Simulate(scene);
 
 // To send to a real device uncomment and replace target name or IP:
-// await PXL.SendToDevice(scene, "DeviceIP_or_NameInNetwork");
+// await PXL.SendToDevice(scene, "192.168.178.100");

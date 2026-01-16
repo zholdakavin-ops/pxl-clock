@@ -46,4 +46,4 @@ var scene = () =>
 
 
 await PXL.Simulate(scene);
-// await PXL.SendToDevice(scene, "DeviceIP_or_NameInNetwork");
+// await PXL.SendToDevice(scene, "192.168.178.100");

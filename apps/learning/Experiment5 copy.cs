@@ -58,8 +58,9 @@ Ctx.Line( 1, 10, x, 14).Stroke.Solid(Colors.Beige);
 
 
 
-await PXL.Simulate(scene);
+// await PXL.Simulate(scene);
 
-// await PXL.SendToDevice(scene, "DeviceIP_or_NameInNetwork");
+await PXL.SendToDevice(scene, "192.168.178.110");
+
 
 
