@@ -1,0 +1,13 @@
+{
+  // Turn off VS Code inline suggestions (applies to all providers)
+  "editor.inlineSuggest.enabled": false,
+
+  // Disable GitHub Copilot entirely in this workspace
+  "github.copilot.enable": false,
+  "github.copilot.inlineSuggest.enable": false,
+
+  // Keep explicit C# rule as well
+  "[csharp]": {
+    "github.copilot.inlineSuggest.enable": false
+  }
+}
